@@ -1,0 +1,7 @@
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+alias search='apt-cache search'
+alias add='sudo apt-get install'
+alias del='sudo apt-get remove'
+alias ..='cd ..'
+alias prj='cd ~/Projetos'
