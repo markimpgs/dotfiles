@@ -58,6 +58,7 @@ inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 map <C-n> :NERDTreeTabsToggle<CR>
 map <F5> :call PythonRun()<cr>
+map <F8> :call FileHeading()<cr>
 map <F6> :so $MYVIMRC<cr>
 nmap <F7> :vsplit <bar> :terminal make<cr>
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -82,3 +83,18 @@ function! PythonRun()
     terminal python %
   endif
 endfunction
+
+function! FileHeading()
+  let s:line=line(".")
+  call setline(s:line,"//***********************Begin Config**********************")
+  call append(s:line,"#pragma config FOSC = XT // Oscillator Selection bits (HS oscillator)")
+  call append(s:line+1,"#pragma config WDTE = ON // Watchdog Timer Enable bit (WDT enabled)")
+  call append(s:line+2,"#pragma config PWRTE = OFF // Power-up Timer Enable bit (PWRT disabled)")
+  call append(s:line+3,"#pragma config BOREN = ON // Brown-out Reset Enable bit (BOR enabled)")
+  call append(s:line+4,"#pragma config LVP = OFF // Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit")
+  call append(s:line+5,"#pragma config CPD = OFF // Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)")
+  call append(s:line+6,"#pragma config WRT = OFF // Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)")
+  call append(s:line+7,"#pragma config CP = OFF // Flash Program Memory Code Protection bit (Code protection off)")
+  unlet s:line
+endfunction
+
