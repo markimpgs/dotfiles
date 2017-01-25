@@ -2,10 +2,11 @@
 
 set nocompatible
 set number
+set tw=80
 set expandtab
 set noshowmode
 set splitright
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set gcr=n:blinkon0              "Disable cursor blink
 set noswapfile
 set nobackup
@@ -25,6 +26,10 @@ filetype indent on
 " Pluggins
 
 call plug#begin()
+Plug 'https://github.com/hail2u/vim-css3-syntax.git'
+Plug 'https://github.com/csscomb/vim-csscomb.git'
+Plug 'https://github.com/ervandew/supertab.git'
+Plug 'othree/html5.vim'
 Plug 'https://github.com/freeo/vim-kalisi.git'
 Plug 'crusoexia/vim-monokai'
 Plug 'git://github.com/tpope/vim-fugitive.git'
