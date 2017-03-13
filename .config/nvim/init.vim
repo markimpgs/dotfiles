@@ -26,20 +26,21 @@ filetype indent on
 " Pluggins
 
 call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/hail2u/vim-css3-syntax.git'
 Plug 'https://github.com/csscomb/vim-csscomb.git'
 Plug 'https://github.com/ervandew/supertab.git'
 Plug 'othree/html5.vim'
-Plug 'https://github.com/freeo/vim-kalisi.git'
 Plug 'crusoexia/vim-monokai'
-Plug 'git://github.com/tpope/vim-fugitive.git'
 Plug 'Valloric/YouCompleteMe'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/jistr/vim-nerdtree-tabs.git'
 Plug 'alvan/vim-closetag'
-Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 call plug#end()
+
 
 
 " Colors
@@ -50,12 +51,26 @@ set background=dark
 set cursorline
 let g:solarized_termcolors=256
 
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='badwolf'
+let g:airline#extensions#whitespace#enabled = 0
 
+function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['mode'])
+    let g:airline_section_b = airline#section#create_left(['branch'])
+    let g:airline_section_c = airline#section#create(['%F'])
+    let g:airline_section_x = airline#section#create(['%y'])
+    let g:airline_section_y = airline#section#create(['%{strftime("%d/%m/%y")}'])
+    let g:airline_section_z = airline#section#create(['%{strftime("%H:%M")}'])
+endfunction
+autocmd VimEnter * call AirlineInit()
+"
 " NERDTRee
 
 let NERDTreeIgnore = ['\.pyc$']
 let g:nerdtree_tabs_open_on_console_startup=1
-
 
 "Key mapping
 
