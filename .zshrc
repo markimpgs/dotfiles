@@ -87,6 +87,14 @@ export LANG=en_US.UTF-8
 # Add alias file
 source ~/.aliases
 
+#Enable cache for build Android from source
+export USE_CCACHE=1
+export CCACHE_COMPRESS=1 
+export ANDROID_JACK_VM_ARGS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G"
+
+#Path to Repo Android Tool
+PATH=~/Projetos/android_bin:$PATH
+
 # enable vim mode on commmand line
 bindkey -v
 
@@ -117,3 +125,11 @@ bindkey '^?' backward-delete-char  #backspace
 # ctrl+r to search history
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
