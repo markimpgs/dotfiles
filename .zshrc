@@ -133,3 +133,10 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+
+export PATH="$HOME/Programas/bin:$PATH"
+
+export DEVKITPRO=/opt/devkitPro
+export DEVKITARM=$DEVKITPRO/devkitARM
+export PATH=$PATH:$DEVKITARM/bin

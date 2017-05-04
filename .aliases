@@ -15,3 +15,8 @@ alias ealias='nvim ~/.bash_aliases'
 alias evim='nvim ~/.config/nvim/init.vim'
 alias search='apt-cache search'
 alias bd_env='. build/envsetup.sh'
+alias nz='nvim ~/.zshrc'
+alias nv='nvim ~/.config/nvim/init.vim'
+alias mkrom='function _mkrom(){ makerom -f cia -o $1 -rsf cia.rsf
+-target t -exefslogo -elf $2 -icon myproject.smdh -banner banner.bin;
+};_mkrom'
