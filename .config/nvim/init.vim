@@ -17,6 +17,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+set encoding=utf8
 
 filetype plugin on
 filetype indent on
@@ -38,6 +39,8 @@ call plug#begin()
   Plug 'https://github.com/jistr/vim-nerdtree-tabs.git'
   Plug 'alvan/vim-closetag'
   Plug 'https://github.com/jiangmiao/auto-pairs.git'
+  Plug 'https://github.com/ryanoasis/vim-devicons'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
 
@@ -51,11 +54,11 @@ set cursorline
 let g:solarized_termcolors=256
 
 " Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled =1
+let g:airline_powerline_fonts =1
 let g:airline_theme='badwolf'
-let g:airline#extensions#whitespace#enabled = 0
-let g:ycm_global_ycm_extra_conf ='/home/markim/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:airline#extensions#whitespace#enabled =0
+let g:ycm_global_ycm_extra_conf ='/home/markim/.ycm_extra_conf.py'
 
 function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode'])
@@ -66,7 +69,8 @@ function! AirlineInit()
     let g:airline_section_z = airline#section#create(['%{strftime("%H:%M")}'])
 endfunction
 autocmd VimEnter * call AirlineInit()
-"
+
+
 " NERDTRee
 
 let NERDTreeIgnore = ['\.pyc$']
@@ -78,6 +82,7 @@ inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 map <C-n> :NERDTreeTabsToggle<CR>
 map <F5> :call PythonRun()<cr>
+map <F10> :call HtmlBasic()<cr>
 map <F8> :call FileHeading()<cr>
 map <F6> :so $MYVIMRC<cr>
 nmap <F7> :vsplit <bar> :terminal make<cr>
@@ -125,4 +130,17 @@ function! FileHeading()
   call append(s:line+6,"#pragma config WRT = OFF // Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)")
   call append(s:line+7,"#pragma config CP = OFF // Flash Program Memory Code Protection bit (Code protection off)")
   unlet s:line
+endfunction
+
+function! HtmlBasic()
+  let s:line=line(".")
+  call setline(s:line,"<!DOCTYPE html>")
+  call setline(s:line+1,"<html>")
+  call setline(s:line+2,"<head>")
+  call setline(s:line+3,"    <title></title>")
+  call setline(s:line+4,"<head>")
+  call setline(s:line+5,"<body>")
+  call setline(s:line+6,"    <h1></h1>")
+  call setline(s:line+7,"<body>")
+  call setline(s:line+8,"<html>")
 endfunction

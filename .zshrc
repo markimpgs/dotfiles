@@ -140,3 +140,4 @@ export PATH="$HOME/Programas/bin:$PATH"
 export DEVKITPRO=/opt/devkitPro
 export DEVKITARM=$DEVKITPRO/devkitARM
 export PATH=$PATH:$DEVKITARM/bin
+export PATH="$HOME/Programas/arduino-1.8.2:$PATH"

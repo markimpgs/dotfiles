@@ -36,7 +36,7 @@ Comment=Editar com NVIM
 # What to run.  Enclose in < > to run an executable that resides in the actions folder.
 # **** REQUIRED ****
 #Exec=gedit %F
-Exec=guake -e "nvim %F"
+Exec=guake --new-tab=Editar --execute-command="nvim %F"
 
 # Icon name to use in the menu - must be a theme icon name
 Icon-Name=vim
