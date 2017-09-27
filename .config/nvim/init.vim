@@ -58,7 +58,6 @@ let g:airline#extensions#tabline#enabled =1
 let g:airline_powerline_fonts =1
 let g:airline_theme='badwolf'
 let g:airline#extensions#whitespace#enabled =0
-let g:ycm_global_ycm_extra_conf ='/home/markim/.ycm_extra_conf.py'
 
 function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode'])
