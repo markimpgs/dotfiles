@@ -13,15 +13,16 @@ set nowb
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
 set expandtab
 set encoding=utf8
 
 filetype plugin on
 filetype indent on
 
+" Python tab format 
+autocmd FileType python set sw=4
+autocmd FileType python set ts=4
+autocmd FileType python set sts=4
 
 " Pluggins
 
@@ -41,6 +42,9 @@ call plug#begin()
   Plug 'https://github.com/jiangmiao/auto-pairs.git'
   Plug 'https://github.com/ryanoasis/vim-devicons'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  Plug 'https://github.com/kien/ctrlp.vim.git'
 call plug#end()
 
 
@@ -52,6 +56,16 @@ syntax on
 set background=dark
 set cursorline
 let g:solarized_termcolors=256
+
+"CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP .'
+
+" Snips
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
 
 " Airline
 let g:airline#extensions#tabline#enabled =1
@@ -69,6 +83,12 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
 
 " NERDTRee
 
