@@ -4,11 +4,18 @@ alias search='apt-cache search'
 alias add='sudo apt-get install'
 alias del='sudo apt-get remove'
 alias ..='cd ..'
-alias prj='cd ~/Projetos/'
 alias down='cd ~/Downloads'
-alias prg='cd ~/Programas'
 alias bb='bitbucket'
 alias search='apt-cache search'
 alias bd_env='. build/envsetup.sh'
 alias nz='nvim ~/.zshrc'
 alias nv='nvim ~/.config/nvim/init.vim'
+alias snvim='sudo -E nvim'
+
+prg () {
+  cd ~/Programas/"$1"
+}
+
+prj () {
+    cd ~/Projetos/"$1"
+}
