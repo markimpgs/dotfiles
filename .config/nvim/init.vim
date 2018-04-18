@@ -19,6 +19,10 @@ set encoding=utf8
 filetype plugin on
 filetype indent on
 
+"cria um esqueleto a partir de um arquivo pre definido
+autocmd BufNewFile *.cpp 0r ~/Projetos/testecpp
+autocmd BufNewFile *.py 0r ~/Projetos/testepy
+
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 for c in range(char2nr('A'), char2nr('Z'))
   execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
@@ -31,6 +35,11 @@ autocmd InsertLeave * set iminsert=0
 autocmd FileType python set sw=4
 autocmd FileType python set ts=4
 autocmd FileType python set sts=4
+
+" Python tab format 
+autocmd FileType cpp set sw=4
+autocmd FileType cpp set ts=4
+autocmd FileType cpp set sts=4
 
 "ASM tab format
 au BufRead,BufNewFile *.asm setlocal textwidth=130
@@ -117,7 +126,7 @@ nnoremap <C-s> :w<cr>
 map <C-n> :NERDTreeTabsToggle<CR>
 map <F5> :call PythonRun()<cr>
 map <F10> :call HtmlBasic()<cr>
-map <F8> :call FileHeading()<cr>
+map <F8> :call CppBasic()<cr>
 map <F6> :so $MYVIMRC<cr>
 nmap <F7> :vsplit <bar> :terminal <cr>
 
@@ -159,14 +168,20 @@ function! FileHeading()
 endfunction
 
 function! HtmlBasic()
-  let s:line=line(".")
-  call setline(s:line,"<!DOCTYPE html>")
-  call setline(s:line+1,"<html>")
-  call setline(s:line+2,"<head>")
-  call setline(s:line+3,"    <title></title>")
-  call setline(s:line+4,"<head>")
-  call setline(s:line+5,"<body>")
-  call setline(s:line+6,"    <h1></h1>")
-  call setline(s:line+7,"<body>")
-  call setline(s:line+8,"<html>")
+  call append(0,"<!DOCTYPE html>")
+  call append(1,"<html>")
+  call append(2,"<head>")
+  call append(3,"    <title></title>")
+  call append(4,"<head>")
+  call append(5,"<body>")
+  call append(6,"    <h1></h1>")
+  call append(7,"<body>")
+  call append(8,"<html>")
 endfunction
+
+function! CppBasic()
+        call append(0, "#include <iostream>")
+        call append(1, "")
+        call append(1, "")
+endfunction
+
