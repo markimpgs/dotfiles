@@ -8,8 +8,8 @@ alias down='cd ~/Downloads'
 alias bb='bitbucket'
 alias search='apt-cache search'
 alias bd_env='. build/envsetup.sh'
-alias nz='nvim ~/.zshrc'
-alias nv='nvim ~/.config/nvim/init.vim'
+alias vz='vim ~/.zshrc'
+alias vv='vim ~/.vimrc'
 alias snvim='sudo -E nvim'
 
 prg () {
