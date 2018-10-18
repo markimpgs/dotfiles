@@ -87,14 +87,6 @@ export LANG=en_US.UTF-8
 # Add alias file
 source ~/.aliases
 
-#Enable cache for build Android from source
-export USE_CCACHE=1
-export CCACHE_COMPRESS=1 
-export ANDROID_JACK_VM_ARGS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G"
-
-#Path to Repo Android Tool
-PATH=~/Projetos/android_bin:$PATH
-
 # enable vim mode on commmand line
 bindkey -v
 
@@ -133,13 +125,5 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-
-export PATH="$HOME/Programas/bin:$PATH"
-
-export DEVKITPRO=/opt/devkitPro
-export DEVKITARM=$DEVKITPRO/devkitARM
-export PATH=$PATH:$DEVKITARM/bin
-export PATH="$HOME/Programas/arduino-1.8.2:$PATH"
-
-
+# Habilita ctrl-s no terminal
+stty -ixon
