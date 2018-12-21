@@ -2,23 +2,63 @@
 
 clear
 
+C1='\033[0;31m' # Vermelho
+C2='\033[0;32m' # Verde
+C3='\033[0;34m' # Azul
+NC='\033[0m'
 VERSAO="$(awk '/^VERSION=/' /etc/*-release | awk -F"[()]" '{print $2}')"
 
 function instalarPacotes () {
 	clear
 
-	echo "Atualizando"
+    whiptail
+    
+    echo -e "${C2}############################"
+	echo -e "Atualizando"
+    echo -e "############################"${NC}
 	sudo apt-get update
 	sudo apt-get upgrade
 
-	echo "Instalando pacotes básicos"
-	sudo apt-get install -y git curl zsh vim dh-autoreconf autotools-dev debhelper libconfuse-dev libgtk-3-dev libvte-2.91-dev pkg-config
+    echo -e "${C2}\n############################"
+	echo -e "Instalando pacotes básicos"
+    echo -e "############################${NC}\n"
+	sudo apt-get install -y git software-properties-common curl zsh dh-autoreconf autotools-dev debhelper libconfuse-dev libgtk-3-dev libvte-2.91-dev pkg-config
+
+    echo -e "${C2}\n############################"
+    echo -e "Instalando drivers$"
+    echo -e "############################${NC}\n"
+    sudo apt-add-repository non-free
+    sudo apt-add-repository contrib
+    sudo apt-get update
+    sudo apt-get install firmware-realtek firmware-iwlwifi
+    sudo modprobe -r iwlwifi 
+    sudo modprobe iwlwifi
+
+    echo -e "${C2}\n############################"
+    echo -e "Placa de Video e BumbleBee"
+    echo -e "############################${NC}\n"
+    sudo apt-get install bumblebee-nvidia primus
+    sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install bumblebee-nvidia primus primus-libs:i386 libgl1-nvidia-glx:i386
+    sudo adduser $USER bumblebee
 	
 	echo "Instalando OhMyZsh"
 	sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 	wget https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme -O ~/.oh-my-zsh/themes/bullet-train.zsh-theme
 
+    echo -e "${C2}\n############################"
+    echo -e "Instalando Vim"
+    echo -e "############################${NC}\n"
+    sudo apt-get update
+    sudo apt-get install ncurses-dev
+    cd /tmp
+    git clone https://github.com/vim/vim.git
+    cd vim/src
+    make
+    sudo make install
+
     echo "Instalando Tilda Terminal"
+    sudo apt-get update
+    sudo apt-get install dh-autoreconf autotools-dev debhelper libconfuse-dev libgtk-3-dev libvte-2.91-dev pkg-config
     cd /tmp
     git clone https://github.com/lanoxx/tilda.git
     cd tilda
@@ -32,7 +72,6 @@ function instalarPacotes () {
 function copiarDotFiles() {
     echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" | sudo tee -a ~/.zshrc
     git clone --bare https://github.com/markimpgs/dotfiles.git $HOME/.cfg
-
 	menuInstalacao
 }
 
