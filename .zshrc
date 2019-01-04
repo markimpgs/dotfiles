@@ -128,3 +128,6 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # Habilita ctrl-s no terminal
 stty -ixon
 alias config='/usr/bin/git --git-dir=/home/markim/.cfg/ --work-tree=/home/markim'
+
+export PS4SDK=/home/markim/Projetos/ps4/ps4sdk
+export PATH=$PS4SDK:$PATH

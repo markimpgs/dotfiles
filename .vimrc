@@ -3,6 +3,7 @@ set clipboard=unnamed
 set number
 syntax on
 filetype on
+set backspace=indent,eol,start
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Arquivos, backups e desfazer
@@ -62,6 +63,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tender'
 
+"Salvar
 inoremap <C-s> <esc>:w<cr>
 nnoremap <C-s> :w<cr>
 
