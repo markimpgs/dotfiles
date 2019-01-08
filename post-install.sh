@@ -24,7 +24,7 @@ function instalarPacotes () {
             echo -e "${C2}\n############################"
             echo -e "Instalando pacotes básicos"
             echo -e "############################${NC}\n"
-            sudo apt-get install -y git software-properties-common curl zsh
+            sudo apt-get install -y git software-properties-common curl zsh gpaste gpaste-applet gir1.2-gpaste-6.0
 
             echo -e "${C2}\n############################"
             echo -e "Instalando drivers$"
@@ -32,15 +32,15 @@ function instalarPacotes () {
             sudo apt-add-repository non-free
             sudo apt-add-repository contrib
             sudo apt-get update
-            sudo apt-get install firmware-realtek firmware-iwlwifi
+            sudo apt-get install -y firmware-realtek firmware-iwlwifi
             sudo modprobe -r iwlwifi 
             sudo modprobe iwlwifi
 
             echo -e "${C2}\n############################"
             echo -e "Placa de Video e BumbleBee"
             echo -e "############################${NC}\n"
-            sudo apt-get install bumblebee-nvidia primus
-            sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install bumblebee-nvidia primus primus-libs:i386 libgl1-nvidia-glx:i386
+            sudo apt-get install -y bumblebee-nvidia primus
+            sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -y install bumblebee-nvidia primus primus-libs:i386 libgl1-nvidia-glx:i386
             sudo adduser $USER bumblebee
             
             echo "Instalando OhMyZsh"
@@ -51,16 +51,17 @@ function instalarPacotes () {
             echo -e "Instalando Vim"
             echo -e "############################${NC}\n"
             sudo apt-get update
-            sudo apt-get install ncurses-dev
+            sudo apt-get -y install ncurses-dev
             cd /tmp
             git clone https://github.com/vim/vim.git
             cd vim/src
             make
             sudo make install
+            curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
             echo "Instalando Tilda Terminal"
             sudo apt-get update
-            sudo apt-get install dh-autoreconf autotools-dev debhelper libconfuse-dev libgtk-3-dev libvte-2.91-dev pkg-config
+            sudo apt-get install -y dh-autoreconf autotools-dev debhelper libconfuse-dev libgtk-3-dev libvte-2.91-dev pkg-config
             cd /tmp
             git clone https://github.com/lanoxx/tilda.git
             cd tilda
