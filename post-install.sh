@@ -21,6 +21,9 @@ function instalarPacotes () {
             sudo apt-get update
             sudo apt-get upgrade
 
+            #Ativando autologin para usuário atual
+            echo "[SeatDefaults]\nautologin-user=$USER\nautologin-user=$USER" | sudo tee -a /etc/lightdm/lightdm.conf
+
             echo -e "${C2}\n############################"
             echo -e "Instalando pacotes básicos"
             echo -e "############################${NC}\n"
@@ -75,7 +78,10 @@ function instalarPacotes () {
                        --prefix=/usr/local
             make
             sudo make install
+            #Instalando Plug
             curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+            #Extras para o plug YouCompleteMe
+            wget https://raw.githubusercontent.com/Valloric/ycmd/master/examples/.ycm_extra_conf.py -O ~/.vim/.ycm_extra_conf.py
 
             echo "Instalando Tilda Terminal"
             sudo apt-get update

@@ -131,3 +131,8 @@ alias config='/usr/bin/git --git-dir=/home/markim/.cfg/ --work-tree=/home/markim
 
 export PS4SDK=/home/markim/Projetos/ps4/ps4sdk
 export PATH=$PS4SDK:$PATH
+
+#PS2 SDK
+export PS2DEV=/home/markim/Projetos/ps2dev
+export PS2SDK=$PS2DEV/ps2sdk
+export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
