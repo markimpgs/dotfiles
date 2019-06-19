@@ -136,3 +136,20 @@ export PATH=$PS4SDK:$PATH
 export PS2DEV=/home/markim/Projetos/ps2dev
 export PS2SDK=$PS2DEV/ps2sdk
 export PATH=$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PS2SDK/bin
+
+#Gallium HUD
+GALLIUM_HUD_TOGGLE_SIGNAL=10 GALLIUM_HUD_VISIBLE=false GALLIUM_HUD=simple,fps,cpu,memory-clock,shader-clock,temperature,GPU-load
+
+#Android repo
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+#Cache android
+export USE_CCACHE=1
+export CCACHE_DIR=/home2/.cache
+#setopt shwordsplit
+#export LC_ALL=C
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"

@@ -1,5 +1,5 @@
 set enc=utf-8
-set clipboard=unnamed
+set clipboard=unnamedplus
 set number
 syntax on
 filetype on
@@ -62,12 +62,25 @@ inoremap <C-D> <Right>,
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
+
+" my_file.ino [arduino:avr:uno] [arduino:usbtinyisp] (/dev/ttyACM0:9600)
+function! MyStatusLine()
+  let port = arduino#GetPort()
+  let line = '%f [' . g:arduino_board . '] [' . g:arduino_programmer . ']'
+  if !empty(port)
+    let line = line . ' (' . port . ':' . g:arduino_serial_baud . ')'
+  endif
+  return line
+endfunction
+setl statusline=%!MyStatusLine()
+
 " Sempre mostrar status line
 set laststatus=2
 set noshowmode
 
 " Formato da status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+autocmd BufNewFile,BufRead *.ino let g:airline_section_x='%{MyStatusLine()}'
 
 " Tema Airline
 let g:airline_powerline_fonts = 1
@@ -92,7 +105,10 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
-
+Plug 'https://github.com/smancill/conky-syntax.vim'
+Plug 'https://github.com/tbastos/vim-lua'
+Plug 'https://github.com/kien/ctrlp.vim'
+Plug 'https://github.com/stevearc/vim-arduino'
 call plug#end()
 
 "UndoTree

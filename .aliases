@@ -10,8 +10,12 @@ alias search='apt-cache search'
 alias bd_env='. build/envsetup.sh'
 alias vz='vim ~/.zshrc'
 alias vv='vim ~/.vimrc'
+alias va='vim ~/.aliases'
 alias svim='sudo -E vim'
 alias gc='git clone'
+alias make='make -j$(nproc)'
+alias rs='repo sync -c --force-sync --no-clone-bundle --no-tags -j$(nproc --all)'
+alias fbi='python ~/Programas/FalconPuncher/FalconPuncher.py'
 
 prg () {
   cd ~/Programas/"$1"
